@@ -32,3 +32,16 @@
 @keyframes sheet-in{from{transform:translate(-50%,30px);opacity:.7}to{transform:translate(-50%,0);opacity:1}}
 .item-sheet{left:8px;right:8px;width:auto;margin:0 auto;transform:none}
 @keyframes sheet-in{from{transform:translateY(24px);opacity:.7}to{transform:translateY(0);opacity:1}}
+@media(max-width:680px){
+  .hero-shade{background:linear-gradient(90deg,#0a1c15f2 0%,#0a1c15c9 58%,#0a1c1544 100%),linear-gradient(0deg,#0c1e1860,transparent 60%)}
+  .hero-caption{bottom:16px;color:#fffD}
+  .section-heading{margin-bottom:19px}
+  .food-photo .badge-row{display:none}
+  .card-badges{display:flex;margin:0 0 7px;gap:4px;min-height:18px;align-items:center}
+  .food-info{padding:12px 11px 13px}
+  .cartbar{min-height:54px}
+  .cart-icon{width:32px;height:32px}
+  .item-sheet>img{height:min(32dvh,270px)}
+  .item-sheet::backdrop{background:#08181066;backdrop-filter:none}
+}
+@media(min-width:681px){.card-badges{display:none}}
