@@ -1,0 +1,1 @@
+The four Makassar food images in `assets/` are AI-generated illustrative images created for this fictional demo. They are not photographs of food actually served by any business. Unsplash images in `website-demo/` are illustrative remote sample images only; replace them with owner-authorized images before real use.
