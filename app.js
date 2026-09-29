@@ -10,15 +10,15 @@ function orderMessage(d) {
   });
   if (!lines.length) return '';
   const total = [...cart].reduce((sum,[name,qty]) => sum + all.find(x => x.name === name).price * qty, 0);
-  return english ? `Hello, I would like to order from Warung Coto Daeng (DEMO):\n${lines.join('\n')}\nExample total: ${money(total)}\nFictional demo draft. Check recipient, items and prices before sending.` : `Halo Warung Coto Daeng (DEMO), saya ingin memesan:\n${lines.join('\n')}\nTotal contoh: ${money(total)}\nCatatan: Ini draf dari demo fiktif. Periksa penerima, menu dan harga sebelum mengirim.`;
+  return english ? `Hello, I would like to order from Warung Coto Daeng (DEMO):\n${lines.join('\n')}\nSimulated total: ${money(total)}\nFictional demo draft; nothing is sent automatically and it is not addressed to the restaurant. Choose and verify the recipient, then check items, quantities and prices before sending.` : `Halo Warung Coto Daeng (DEMO), saya ingin memesan:\n${lines.join('\n')}\nTotal simulasi: ${money(total)}\nCatatan: Ini hanya draf demo fiktif; tidak terkirim otomatis dan belum ditujukan ke restoran. Pilih dan pastikan penerima, lalu cek menu, jumlah, dan harga sebelum mengirim.`;
 }
 function updateCart() {
   const count = [...cart.values()].reduce((a,b) => a+b, 0);
   const bar = document.querySelector('#cartbar');
   bar.hidden = count === 0;
-  document.querySelector('#cartSummary').textContent = english ? `${count} item selected · sample total ${money([...cart].reduce((s,[n,q]) => s+all.find(x=>x.name===n).price*q,0))}` : `${count} item dipilih · total contoh ${money([...cart].reduce((s,[n,q]) => s+all.find(x=>x.name===n).price*q,0))}`;
+  document.querySelector('#cartSummary').textContent = english ? `${count} ${count===1?'item':'items'} selected · simulated total ${money([...cart].reduce((s,[n,q]) => s+all.find(x=>x.name===n).price*q,0))}` : `${count} item dipilih · total simulasi ${money([...cart].reduce((s,[n,q]) => s+all.find(x=>x.name===n).price*q,0))}`;
   document.querySelectorAll('.compose-order').forEach(a => {
-    if (count) { a.href = `https://wa.me/?text=${encodeURIComponent(orderMessage())}`; a.target = '_blank'; a.rel = 'noopener'; }
+    if (count) { const phone=(menuData.whatsappPhone||'').replace(/\D/g,''); a.href = `https://wa.me/${phone}?text=${encodeURIComponent(orderMessage())}`; a.target = '_blank'; a.rel = 'noopener'; }
     else { a.href = '#menu'; a.removeAttribute('target'); }
   });
 }
@@ -30,14 +30,14 @@ function render() {
   document.querySelector('.hero .eyebrow').textContent = english ? 'FROM THE MAKASSAR KITCHEN' : 'DARI DAPUR MAKASSAR';
   document.querySelector('#tagline').textContent = english ? 'Warm Makassar flavors, ready to share.' : menuData.tagline;
   document.querySelector('#menu .eyebrow').textContent = english ? 'TODAY’S MENU' : 'PILIHAN HARI INI';
-  document.querySelector('#menu .small').textContent = english ? 'Example prices in IDR' : 'Harga contoh dalam rupiah';
+  document.querySelector('#menu .small').textContent = english ? 'Simulated prices in IDR' : 'Harga contoh dalam rupiah';
   document.querySelector('.info > div:first-child .eyebrow').textContent = english ? 'VISIT US' : 'KUNJUNGI KAMI';
   document.querySelector('.info > div:first-child h2').textContent = english ? 'Hours & location' : 'Jam & lokasi';
   document.querySelector('.info > div:first-child .button').textContent = english ? 'Open map ↗' : 'Buka peta ↗';
   document.querySelector('.order-card .eyebrow').textContent = english ? 'WANT TO ORDER?' : 'MAU MEMESAN?';
   document.querySelector('.order-card h2').textContent = english ? 'Build your order' : 'Susun pesanan';
-  document.querySelector('.order-card p').textContent = english ? 'Choose items and quantities. WhatsApp opens a draft only; check recipient and total before sending.' : 'Tambahkan item dan jumlahnya. WhatsApp hanya membuka draf; periksa penerima dan total sebelum mengirim.';
-  document.querySelectorAll('.compose-order').forEach(a => a.textContent = english ? 'Continue to WhatsApp draft' : 'Pesan via WhatsApp');
+  document.querySelector('.order-card p').textContent = english ? 'Choose items and quantities. WhatsApp opens an unsent draft without a restaurant recipient; choose and verify the recipient, then check items, quantities and prices before sending.' : 'Pilih item dan jumlahnya. WhatsApp hanya membuka draf yang belum ditujukan ke restoran; pilih dan periksa penerima, item, jumlah, serta harga sebelum mengirim.';
+  document.querySelectorAll('.compose-order').forEach(a => a.textContent = english ? 'Open WhatsApp draft' : 'Buka draf WhatsApp');
   document.querySelector('#hours').textContent = english ? 'Daily · 10.00–22.00 (example)' : menuData.hours;
   document.querySelector('#address').textContent = english ? 'Example Street No. 10, Makassar (fictional address)' : menuData.address;
   document.querySelector('#disclaimer').textContent = english ? 'FICTIONAL DEMO. Business name, contact, location, hours, prices, menu, tags and images are examples only. The halal tag is a placeholder, not a certification claim. AI photos are illustrative and do not show food sold by a real business. WhatsApp only prepares a draft; check the recipient, items and quantities before sending.' : menuData.disclaimer;
@@ -45,8 +45,8 @@ function render() {
   document.querySelectorAll('#categories button').forEach(b=>b.onclick=()=>{document.querySelector('#search').value=b.dataset.category==='Semua'?'':b.dataset.category;render()});
   document.querySelector('#items').innerHTML = items.map(x => {
     const qty = cart.get(x.name) || 0;
-    const tags = english ? 'Example tags only · no halal certification claim' : x.tags.join(' · ');
-    return `<article class="card"><img loading="lazy" src="${x.image}" alt="Foto AI ilustrasi ${x.name}; bukan foto produk"><div class="card-content"><h3>${english?(dict[x.name]||x.name):x.name}</h3><p>${english?(descriptions[x.name]||'Illustrative description · demo only'):x.description}</p><div class="price">${money(x.price)}</div><div class="tags">${tags}</div><div class="item-controls"><button class="button outline" data-add="${x.name}" aria-label="${english?'Remove one':'Kurangi satu'} ${english?(dict[x.name]||x.name):x.name}">${qty ? '−' : '+'}</button><span>${qty}</span><button class="button outline" data-plus="${x.name}">${english?'Add':'Tambah'}</button></div></div></article>`;
+    const tags = english ? 'Example tag only · not a halal certification claim' : x.tags.join(' · ');
+    return `<article class="card"><img loading="lazy" src="${x.image}" alt="Foto AI ilustrasi ${x.name}; bukan foto produk"><div class="card-content"><h3>${english?(dict[x.name]||x.name):x.name}</h3><p>${english?(descriptions[x.name]||'Illustrative description · demo only'):x.description}</p><div class="price">${money(x.price)}</div><div class="tags">${tags}</div><div class="item-controls"><button class="button outline" data-add="${x.name}" aria-label="${english?'Remove 1':'Kurangi 1'} ${english?(dict[x.name]||x.name):x.name}">${qty ? '−' : '+'}</button><span>${qty}</span><button class="button outline" data-plus="${x.name}">${english?'Add':'Tambah'}</button></div></div></article>`;
   }).join('');
   document.querySelector('#empty').hidden = items.length > 0;
   document.querySelector('#menuHeading').textContent = english ? 'Browse the menu' : 'Menu lengkap';
