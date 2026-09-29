@@ -7,10 +7,10 @@
   "hours": "Setiap hari · 10.00–22.00 (contoh)",
   "locationUrl": "https://maps.google.com/?q=Makassar",
   "menu": [
-    {"category":"Makanan","name":"Coto Makassar","description":"Daging sapi dan kuah rempah; disajikan dengan ketupat.","price":32000,"tags":["Halal*","Pedas ringan"],"image":"assets/coto.jpg"},
-    {"category":"Makanan","name":"Konro Bakar","description":"Iga sapi berbumbu, dibakar dan disajikan hangat.","price":58000,"tags":["Halal*","Pedas"],"image":"assets/konro.jpg"},
-    {"category":"Makanan","name":"Pallubasa","description":"Kuah rempah khas, pilihan daging dan kelapa sangrai.","price":35000,"tags":["Halal*","Bisa pedas"],"image":"assets/pallubasa.jpg"},
-    {"category":"Minuman & pencuci mulut","name":"Es Pisang Ijo","description":"Pisang berbalut adonan pandan, es dan sirup.","price":18000,"tags":["Manis"],"image":"assets/pisang-ijo.jpg"}
+    {"category":"Makanan","name":"Coto Makassar","description":"Daging sapi dan kuah rempah; disajikan dengan ketupat.","price":32000,"tags":["Halal? contoh — bukan sertifikasi","Pedas ringan (contoh)"],"image":"assets/coto.jpg"},
+    {"category":"Makanan","name":"Konro Bakar","description":"Iga sapi berbumbu, dibakar dan disajikan hangat.","price":58000,"tags":["Halal? contoh — bukan sertifikasi","Pedas (contoh)"],"image":"assets/konro.jpg"},
+    {"category":"Makanan","name":"Pallubasa","description":"Kuah rempah khas, pilihan daging dan kelapa sangrai.","price":35000,"tags":["Halal? contoh — bukan sertifikasi","Bisa pedas (contoh)"],"image":"assets/pallubasa.jpg"},
+    {"category":"Minuman & pencuci mulut","name":"Es Pisang Ijo","description":"Pisang berbalut adonan pandan, es dan sirup.","price":18000,"tags":["Manis (contoh)"],"image":"assets/pisang-ijo.jpg"}
   ],
-  "disclaimer": "DEMO FIKTIF. Nama, nomor, lokasi, jam, harga, menu dan gambar hanya contoh. Label Halal* adalah placeholder dan bukan sertifikasi. Foto ilustrasi; bukan foto produk yang dijual."
+  "disclaimer": "DEMO FIKTIF. Nama, nomor, lokasi, jam, harga, menu, tag dan gambar hanya contoh. Tag halal hanya placeholder, bukan klaim produk tersertifikasi. Foto AI ilustrasi; bukan foto produk yang dijual. Tombol WhatsApp hanya menyiapkan draf pesan; periksa penerima, item dan jumlah sebelum mengirim."
 }
