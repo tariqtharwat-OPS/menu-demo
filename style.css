@@ -30,3 +30,5 @@
 .item-sheet{left:50%;right:auto}
 .item-sheet[open]{animation:sheet-in .32s cubic-bezier(.2,.8,.2,1)}
 @keyframes sheet-in{from{transform:translate(-50%,30px);opacity:.7}to{transform:translate(-50%,0);opacity:1}}
+.item-sheet{left:8px;right:8px;width:auto;margin:0 auto;transform:none}
+@keyframes sheet-in{from{transform:translateY(24px);opacity:.7}to{transform:translateY(0);opacity:1}}
