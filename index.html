@@ -98,7 +98,7 @@
       <div class="hero-caption"><span>RASA ASLI SULAWESI SELATAN</span><span>01 — 04</span></div>
     </section>
 
-    <section class="welcome-row" aria-label="Pencarian dan aksi">
+    <section id="welcome" class="welcome-row" aria-label="Pencarian dan aksi">
       <div><p class="eyebrow">SELAMAT DATANG</p><h2 id="welcomeHeading">Ada rasa yang ingin dicoba?</h2></div>
       <div class="quick-actions"><label class="search"><span aria-hidden="true">⌕</span><input id="search" placeholder="Cari menu…" aria-label="Cari menu"></label><a class="wa-quick compose-order" href="#menu" aria-label="Susun pesanan WhatsApp">↗</a></div>
     </section>
@@ -137,10 +137,7 @@
       "name": "Coto Makassar",
       "description": "Daging sapi dan kuah rempah, ditemani ketupat.",
       "price": 32000,
-      "tags": [
-        "Status halal: contoh saja — bukan sertifikasi",
-        "Pedas ringan (contoh)"
-      ],
+      "tags": ["Halal · contoh", "Pedas ringan"],
       "image": "assets/coto.webp"
     },
     {
@@ -148,10 +145,7 @@
       "name": "Konro Bakar",
       "description": "Iga sapi berbumbu, dibakar dan disajikan hangat.",
       "price": 58000,
-      "tags": [
-        "Status halal: contoh saja — bukan sertifikasi",
-        "Pedas (contoh)"
-      ],
+      "tags": ["Halal · contoh", "Pedas"],
       "image": "assets/konro.webp"
     },
     {
@@ -159,22 +153,29 @@
       "name": "Pallubasa",
       "description": "Kuah rempah khas, pilihan daging dan kelapa sangrai.",
       "price": 35000,
-      "tags": [
-        "Status halal: contoh saja — bukan sertifikasi",
-        "Bisa pedas (contoh)"
-      ],
+      "tags": ["Halal · contoh", "Bisa pedas"],
       "image": "assets/pallubasa.webp"
     },
     {
-      "category": "Minuman & pencuci mulut",
+      "category": "Minuman",
       "name": "Es Pisang Ijo",
       "description": "Pisang berbalut adonan pandan, es dan sirup.",
       "price": 18000,
-      "tags": [
-        "Manis (contoh)"
-      ],
+      "tags": ["Manis", "Favorit"],
       "image": "assets/pisang-ijo.webp"
-    }
+    },
+    {"category":"Makanan","name":"Sop Saudara","description":"Sup daging berempah dengan bihun, kentang goreng, dan perkedel.","price":32000,"tags":["Hangat","Khas Makassar"],"image":"assets/coto.webp"},
+    {"category":"Makanan","name":"Nasu Palekko","description":"Bebek berbumbu khas dengan rasa pedas yang menggugah selera.","price":38000,"tags":["Pedas","Khas Bugis"],"image":"assets/konro.webp"},
+    {"category":"Makanan","name":"Ikan Bakar","description":"Ikan bakar berbumbu, disajikan dengan sambal dan jeruk segar.","price":45000,"tags":["Bakar","Sambal"],"image":"assets/hero.webp"},
+    {"category":"Makanan","name":"Mie Titi","description":"Mie kering renyah bersiram kuah kental berisi sayur dan ayam.","price":30000,"tags":["Gurih","Khas Makassar"],"image":"assets/pallubasa.webp"},
+    {"category":"Minuman","name":"Es Palu Butung","description":"Pisang kukus dengan saus santan, es, dan sirup merah.","price":18000,"tags":["Dingin","Manis"],"image":"assets/pisang-ijo.webp"},
+    {"category":"Minuman","name":"Teh Hangat","description":"Teh pilihan diseduh hangat, pas menemani hidangan berempah.","price":8000,"tags":["Hangat","Pilihan"],"image":"assets/coto.webp"},
+    {"category":"Minuman","name":"Es Teh","description":"Teh segar dengan es, sederhana untuk teman bersantap.","price":8000,"tags":["Dingin","Segar"],"image":"assets/hero.webp"},
+    {"category":"Minuman","name":"Kopi Susu","description":"Kopi dan susu dengan rasa seimbang, disajikan dingin.","price":18000,"tags":["Kopi","Dingin"],"image":"assets/pallubasa.webp"},
+    {"category":"Minuman","name":"Es Jeruk","description":"Perasan jeruk segar dengan es, asam-manis menyegarkan.","price":15000,"tags":["Dingin","Segar"],"image":"assets/hero.webp"},
+    {"category":"Camilan","name":"Jalangkote","description":"Pastel renyah berisi sayuran dan bihun, dengan sambal cuka.","price":10000,"tags":["Gurih","Camilan"],"image":"assets/konro.webp"},
+    {"category":"Camilan","name":"Barongko","description":"Kue pisang kukus lembut dalam bungkus daun pisang.","price":12000,"tags":["Manis","Tradisional"],"image":"assets/pisang-ijo.webp"},
+    {"category":"Camilan","name":"Pisang Epe","description":"Pisang bakar pipih dengan siraman saus gula merah.","price":18000,"tags":["Bakar","Manis"],"image":"assets/hero.webp"}
   ],
   "disclaimer": "DEMO FIKTIF. Nama, nomor, lokasi, jam, harga, menu, tag dan gambar hanya contoh. Tag halal hanya placeholder, bukan klaim produk tersertifikasi. Foto AI ilustrasi; bukan foto produk yang dijual. Tombol WhatsApp hanya menyiapkan draf pesan; periksa penerima, item dan jumlah sebelum mengirim."
 }
@@ -183,8 +184,9 @@
 let english = false, dark = false, all = [], cart = new Map(), menuData = null, activeCategory = 'Semua', activeItem = null;
 const $ = s => document.querySelector(s);
 const money = n => 'Rp' + new Intl.NumberFormat('id-ID').format(n);
-const dict = {'Coto Makassar':'Makassar beef soup','Konro Bakar':'Grilled beef ribs','Pallubasa':'Pallubasa beef soup','Es Pisang Ijo':'Green banana dessert','Makanan':'Main dishes','Minuman & pencuci mulut':'Drinks & dessert'};
-const descEN = {'Coto Makassar':'Beef in a spiced broth, served with ketupat.','Konro Bakar':'Smoky grilled beef ribs with a rich Makassar spice rub.','Pallubasa':'Silky spiced broth with beef and toasted coconut.','Es Pisang Ijo':'Banana wrapped in pandan dough, shaved ice and syrup.'};
+const dict = {'Coto Makassar':'Makassar Beef Soup','Konro Bakar':'Grilled Beef Ribs','Pallubasa':'Pallubasa Beef Soup','Es Pisang Ijo':'Green Banana Dessert','Sop Saudara':'Makassar Beef Soup','Nasu Palekko':'Spicy Duck','Ikan Bakar':'Grilled Fish','Mie Titi':'Crispy Noodles','Es Palu Butung':'Palu Butung Dessert','Teh Hangat':'Hot Tea','Es Teh':'Iced Tea','Kopi Susu':'Milk Coffee','Es Jeruk':'Iced Orange','Jalangkote':'Savory Pastry','Barongko':'Banana Cake','Pisang Epe':'Grilled Banana','Makanan':'Food','Minuman':'Drinks','Camilan':'Snacks'};
+const descEN = {'Coto Makassar':'Beef in a spiced broth, served with ketupat.','Konro Bakar':'Grilled beef ribs with a rich Makassar spice blend.','Pallubasa':'Spiced beef soup with toasted coconut.','Es Pisang Ijo':'Banana wrapped in pandan dough with ice and syrup.','Sop Saudara':'Spiced beef soup with rice noodles, fried potato and fritter.','Nasu Palekko':'Duck cooked with a distinctive, lively Bugis spice blend.','Ikan Bakar':'Grilled fish with sambal and a squeeze of fresh lime.','Mie Titi':'Crispy noodles covered with thick chicken and vegetable gravy.','Es Palu Butung':'Steamed banana with coconut sauce, ice and red syrup.','Teh Hangat':'Freshly brewed tea, served warm with a spiced meal.','Es Teh':'Refreshing iced tea for a simple, cool sip.','Kopi Susu':'Balanced coffee and milk, served chilled.','Es Jeruk':'Fresh orange juice over ice, bright and sweet-tart.','Jalangkote':'Crisp pastry filled with vegetables and rice noodles, with vinegar chili.','Barongko':'Soft steamed banana cake wrapped in banana leaf.','Pisang Epe':'Pressed grilled banana with palm-sugar sauce.'};
+const tagEN = {'Halal · contoh':'Halal · example','Pedas ringan':'Mild spice','Pedas':'Spicy','Bisa pedas':'Spice on request','Hangat':'Warm','Khas Makassar':'Makassar classic','Khas Bugis':'Bugis classic','Bakar':'Grilled','Sambal':'Chili relish','Gurih':'Savory','Dingin':'Chilled','Manis':'Sweet','Favorit':'Favorite','Pilihan':'Classic','Segar':'Refreshing','Kopi':'Coffee','Camilan':'Snack','Tradisional':'Traditional'};
 const quantity = name => cart.get(name) || 0;
 const safe = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const label = item => english ? (dict[item.name] || item.name) : item.name;
@@ -213,17 +215,25 @@ function updateOrder() {
 function tagsFor(item){
   const tags=[];
   if(item.name==='Coto Makassar')tags.push(`<span class="badge best">${english?'BEST SELLER':'TERLARIS'}</span>`);
-  if(item.tags.some(t=>/pedas/i.test(t)))tags.push(`<span class="badge hot">${english?'SPICY':'PEDAS'}</span>`);
-  if(item.tags.some(t=>/halal/i.test(t)))tags.push(`<span class="badge halal">${english?'HALAL · EXAMPLE':'HALAL · CONTOH'}</span>`);
+  for(const t of item.tags) tags.push(`<span class="badge ${/pedas/i.test(t)?'hot':/halal/i.test(t)?'halal':''}">${safe(english?(tagEN[t]||t):t)}</span>`);
   return tags.join('');
 }
 function renderCategories(){
   const categories=['Semua',...new Set(all.map(x=>x.category))];
-  $('#categories').innerHTML=categories.map(cat=>`<button class="category-chip ${cat===activeCategory?'active':''}" type="button" data-category="${safe(cat)}">${categoryLabel(cat)}</button>`).join('');
+  $('#categories').innerHTML=categories.map(cat=>`<button class="category-chip ${cat===activeCategory?'active':''}" type="button" data-category="${safe(cat)}" aria-label="${english?'Show category ':'Tampilkan kategori '}${safe(categoryLabel(cat))}">${categoryLabel(cat)}</button>`).join('');
   document.querySelectorAll('.category-chip').forEach(btn=>btn.addEventListener('click',()=>{activeCategory=btn.dataset.category;$('#search').value='';render();btn.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}));
 }
 function render(){
   document.documentElement.lang=english?'en':'id';
+  $('#welcome').setAttribute('aria-label',english?'Search and actions':'Pencarian dan aksi');
+  $('#categories').setAttribute('aria-label',english?'Menu categories':'Kategori menu');
+  $('#search').setAttribute('aria-label',english?'Search menu':'Cari menu');
+  $('.wa-quick').setAttribute('aria-label',english?'Prepare a WhatsApp order':'Susun pesanan WhatsApp');
+  $('#theme').setAttribute('aria-label',english?(dark?'Use light theme':'Use dark theme'):(dark?'Gunakan tema terang':'Gunakan tema gelap'));
+  $('#lang').setAttribute('aria-label',english?'Switch language to Indonesian':'Ganti bahasa ke Inggris');
+  $('.sheet-close').setAttribute('aria-label',english?'Close item details':'Tutup detail menu');
+  $('#sheetMinus').setAttribute('aria-label',english?'Decrease quantity':'Kurangi jumlah');
+  $('#sheetPlus').setAttribute('aria-label',english?'Increase quantity':'Tambah jumlah');
   const q=$('#search').value.trim().toLocaleLowerCase();
   const shown=all.filter(item=>{
     const inCategory=activeCategory==='Semua'||item.category===activeCategory;
@@ -247,7 +257,7 @@ function render(){
   $('#cartCta').textContent=english?'Review order':'Lihat pesanan';
   $('#disclaimer').textContent=english?'FICTIONAL DEMO. Business, hours, location, prices, dishes, tags and images are examples only. The halal badge is a placeholder, not a certification claim. AI food photos are illustrative and do not show products sold by a real business. WhatsApp only opens an unsent draft; choose and verify the recipient, then check the order before sending.':'DEMO FIKTIF. Nama usaha, jam, lokasi, harga, menu, tag, dan gambar hanya contoh. Lencana halal adalah placeholder, bukan klaim sertifikasi. Foto makanan AI bersifat ilustratif dan bukan produk yang dijual usaha nyata. WhatsApp hanya membuka draf yang belum terkirim; pilih dan pastikan penerima, lalu periksa pesanan sebelum mengirim.';
   renderCategories();
-  $('#items').innerHTML=shown.map((item,i)=>`<article class="food-card" data-open="${safe(item.name)}" style="animation-delay:${Math.min(i*55,220)}ms" tabindex="0" aria-label="${english?'See details for':'Lihat detail'} ${safe(label(item))}"><div class="food-photo"><img src="${safe(item.image)}" alt="Foto ilustrasi ${safe(label(item))}; bukan foto produk" loading="lazy" decoding="async"><div class="badge-row">${tagsFor(item)}</div></div><div class="food-info"><div class="badge-row card-badges">${tagsFor(item)}</div><div class="food-title-row"><h3>${safe(label(item))}</h3><button class="add-mini" type="button" data-add="${safe(item.name)}" aria-label="${english?'Add':'Tambah'} ${safe(label(item))} to order">+</button></div><p>${safe(description(item))}</p><div class="food-foot"><strong class="food-price">${money(item.price)}</strong><span class="tap-note">${english?'VIEW DETAIL':'LIHAT DETAIL'} ↗</span></div></div></article>`).join('');
+  $('#items').innerHTML=shown.map((item,i)=>`<article class="food-card" data-open="${safe(item.name)}" style="animation-delay:${Math.min(i*55,220)}ms" tabindex="0" aria-label="${english?'See details for':'Lihat detail'} ${safe(label(item))}"><div class="food-photo"><img src="${safe(item.image)}" alt="${english?'Illustrative photo of ':'Foto ilustrasi '}${safe(label(item))}" loading="lazy" decoding="async"><div class="badge-row">${tagsFor(item)}</div></div><div class="food-info"><div class="badge-row card-badges">${tagsFor(item)}</div><div class="food-title-row"><h3>${safe(label(item))}</h3><button class="add-mini" type="button" data-add="${safe(item.name)}" aria-label="${english?'Add ':'Tambah '}${safe(label(item))}${english?' to order':' ke pesanan'}">+</button></div><p>${safe(description(item))}</p><div class="food-foot"><strong class="food-price">${money(item.price)}</strong><span class="tap-note">${english?'VIEW DETAIL':'LIHAT DETAIL'} ↗</span></div></div></article>`).join('');
   $('#empty').hidden=shown.length>0;
   document.querySelectorAll('.food-card').forEach(card=>{
     const open=()=>openSheet(card.dataset.open);
@@ -262,7 +272,7 @@ function openSheet(name){
 }
 function refreshSheet(){
   if(!activeItem)return;
-  $('#sheetImage').src=activeItem.image;$('#sheetImage').alt=`Foto ilustrasi ${label(activeItem)}; bukan foto produk`;
+  $('#sheetImage').src=activeItem.image;$('#sheetImage').alt=`${english?'Illustrative photo of ':'Foto ilustrasi '}${label(activeItem)}`;
   $('#sheetBadges').innerHTML=tagsFor(activeItem);$('#sheetName').textContent=label(activeItem);$('#sheetDescription').textContent=description(activeItem);$('#sheetPrice').textContent=money(activeItem.price);
   $('#sheetQty').textContent=quantity(activeItem.name);
 }
@@ -272,7 +282,7 @@ DATA.then(d=>{
   $('#name').textContent=d.businessName.replace(/^Warung\s+/,'').replace(' — DEMO','');$('#brandName').textContent=d.businessName.replace('Warung ','').replace(' — DEMO','');$('#footerName').textContent=d.businessName.replace(' — DEMO','');
   $('#tagline').textContent=d.tagline;$('#heroHours').textContent=d.hours.replace('Setiap hari · ','').replace(' (contoh)','');$('#hours').textContent=d.hours;$('#address').textContent=d.address;$('#map').href=d.locationUrl;
   $('#lang').addEventListener('click',()=>{english=!english;$('#lang').textContent=english?'ID':'EN';render();updateOrder();});
-  $('#theme').addEventListener('click',()=>{dark=!dark;document.body.classList.toggle('dark-theme',dark);$('#theme').textContent=dark?'☼':'◐';$('#theme').setAttribute('aria-label',dark?'Gunakan tema terang':'Gunakan tema gelap');});
+  $('#theme').addEventListener('click',()=>{dark=!dark;document.body.classList.toggle('dark-theme',dark);$('#theme').textContent=dark?'☼':'◐';$('#theme').setAttribute('aria-label',english?(dark?'Use light theme':'Use dark theme'):(dark?'Gunakan tema terang':'Gunakan tema gelap'));});
   $('#search').addEventListener('input',()=>{activeCategory='Semua';render();});
   $('#sheetClose')?.addEventListener('click',()=>$('#itemSheet').close());
   $('.sheet-close').addEventListener('click',()=>$('#itemSheet').close());
