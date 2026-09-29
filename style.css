@@ -55,3 +55,8 @@
   .hero-caption{font-size:10px;letter-spacing:.15em}
   .item-sheet .sheet-close{right:23px;top:23px;box-shadow:0 2px 14px #081c1533}
 }
+@media(max-width:680px){
+  .hero-shade{background:linear-gradient(90deg,#0a1c15db 0%,#0a1c1599 58%,#0a1c1522 100%),linear-gradient(0deg,#0c1e1860,transparent 60%)}
+  .add-mini{border-radius:5px;background:#f8f5ed;color:var(--forest)}
+  .add-mini:hover{background:var(--forest);color:white}
+}
