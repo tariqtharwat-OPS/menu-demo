@@ -45,3 +45,13 @@
   .item-sheet::backdrop{background:#08181066;backdrop-filter:none}
 }
 @media(min-width:681px){.card-badges{display:none}}
+@media(max-width:680px){
+  .cartbar{width:min(330px,calc(100% - 24px));min-height:52px;padding:6px 7px 6px 9px;gap:7px}
+  .cart-copy{gap:7px}
+  .cart-copy b{font-size:10px}
+  .cart-copy small{font-size:9px}
+  .cart-icon{width:30px;height:30px}
+  .cart-button{min-width:116px;padding:10px 10px;font-size:10px}
+  .hero-caption{font-size:10px;letter-spacing:.15em}
+  .item-sheet .sheet-close{right:23px;top:23px;box-shadow:0 2px 14px #081c1533}
+}
