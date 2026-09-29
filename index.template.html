@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Contoh menu digital fiktif Warung Coto Daeng Makassar. Demo, bukan restoran nyata.">
+  <meta property="og:title" content="Warung Coto Daeng — DEMO">
+  <meta property="og:description" content="Menu digital interaktif khas Makassar">
+  <meta name="theme-color" content="#17392e">
+  <link rel="preload" as="image" href="assets/coto.webp" fetchpriority="high">
+  <title>Warung Coto Daeng — DEMO</title>
+  <!-- BUILD:STYLES -->
+</head>
+<body>
+  <div class="demo-ribbon"><span>MENU CONTOH</span><span>Foto ilustrasi · Usaha fiktif</span></div>
+  <header class="site-head">
+    <a class="brand" href="#top" aria-label="Warung Coto Daeng, beranda">
+      <span class="brand-mark" aria-hidden="true">D</span>
+      <span><b id="brandName">Coto Daeng</b><small>MAKASSAR · SEJAK PAGI</small></span>
+    </a>
+    <div class="head-actions"><button id="theme" class="icon-button" type="button" aria-label="Ganti tema">◐</button><button id="lang" class="lang-button" type="button">EN</button></div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-shade"></div>
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="live-dot"></span><span id="heroOverline">DAPUR HANGAT · MAKASSAR</span></p>
+        <h1 id="name">Coto Daeng</h1>
+        <p class="hero-tagline" id="tagline">Rasa hangat Makassar, siap dinikmati bersama.</p>
+        <div class="hero-meta"><span>✦ <span id="heroBest">Favorit warga</span></span><i></i><span>◷ <span id="heroHours">10.00–22.00</span></span></div>
+        <a class="hero-cta" href="#menu"><span id="heroCta">Jelajahi menu</span><span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="hero-caption"><span>RASA ASLI SULAWESI SELATAN</span><span>01 — 04</span></div>
+    </section>
+
+    <section class="welcome-row" aria-label="Pencarian dan aksi">
+      <div><p class="eyebrow">SELAMAT DATANG</p><h2 id="welcomeHeading">Ada rasa yang ingin dicoba?</h2></div>
+      <div class="quick-actions"><label class="search"><span aria-hidden="true">⌕</span><input id="search" placeholder="Cari menu…" aria-label="Cari menu"></label><a class="wa-quick compose-order" href="#menu" aria-label="Susun pesanan WhatsApp">↗</a></div>
+    </section>
+
+    <nav id="categories" class="category-rail" aria-label="Kategori menu"></nav>
+
+    <section class="menu-section" id="menu">
+      <div class="section-heading"><div><p class="eyebrow" id="menuOverline">DARI DAPUR KAMI</p><h2 id="menuHeading">Yang jadi kesukaan</h2></div><span class="price-note" id="priceNote">Harga dalam rupiah</span></div>
+      <div id="items" class="food-grid" aria-live="polite"></div>
+      <p id="empty" class="empty" hidden>Menu belum ditemukan. Coba kata lain.</p>
+    </section>
+
+    <section class="visit-section">
+      <img class="visit-photo" src="assets/hero.webp" loading="lazy" decoding="async" alt="Foto ilustrasi hidangan Makassar untuk demo fiktif">
+      <div class="visit-copy"><p class="eyebrow" id="visitOverline">SINGGAH SEBENTAR</p><h2 id="visitTitle">Selalu ada tempat di meja kami.</h2><p id="hours"></p><p id="address"></p><a class="text-link" id="map" target="_blank" rel="noopener">Buka peta <span>↗</span></a></div>
+    </section>
+
+    <section class="order-section"><div class="order-copy"><p class="eyebrow">PESAN DENGAN MUDAH</p><h2 id="orderTitle">Racik pesananmu.</h2><p id="orderBody">Pilih hidangan favorit. Kami siapkan draf pesanan untuk WhatsApp.</p></div><a class="button dark-button compose-order" href="#menu"><span id="orderCta">Mulai pilih menu</span><span aria-hidden="true">↗</span></a></section>
+    <footer><div class="footer-brand"><span class="brand-mark">D</span><span id="footerName">Warung Coto Daeng</span></div><p id="disclaimer"></p><small>MENU DIGITAL · CONTOH USAHA LOKAL</small></footer>
+  </main>
+
+  <aside class="cartbar" id="cartbar" hidden aria-live="polite"><div class="cart-copy"><span class="cart-icon">＋</span><span><b id="cartCount">0 item</b><small id="cartTotal">Total Rp0</small></span></div><a class="button cart-button compose-order" href="#menu"><span id="cartCta">Lihat pesanan</span><span aria-hidden="true">↗</span></a></aside>
+
+  <dialog id="itemSheet" class="item-sheet"><button class="sheet-close" type="button" aria-label="Tutup">×</button><img id="sheetImage" alt=""><div class="sheet-content"><div id="sheetBadges" class="badge-row"></div><h2 id="sheetName"></h2><p id="sheetDescription"></p><div class="sheet-bottom"><strong id="sheetPrice"></strong><div class="stepper"><button id="sheetMinus" type="button" aria-label="Kurangi jumlah">−</button><span id="sheetQty">0</span><button id="sheetPlus" type="button" aria-label="Tambah jumlah">+</button></div></div></div></dialog>
+  <!-- BUILD:MENU -->
+  <!-- BUILD:APP -->
+</body>
+</html>

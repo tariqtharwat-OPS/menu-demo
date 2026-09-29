@@ -1,4 +1,4 @@
-const DATA = fetch('menu.json').then(r => { if (!r.ok) throw new Error('menu.json unavailable'); return r.json(); });
+const DATA = Promise.resolve(JSON.parse(document.querySelector('#menu-data').textContent));
 let english = false, dark = false, all = [], cart = new Map(), menuData = null, activeCategory = 'Semua', activeItem = null;
 const $ = s => document.querySelector(s);
 const money = n => 'Rp' + new Intl.NumberFormat('id-ID').format(n);
