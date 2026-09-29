@@ -43,11 +43,13 @@ function renderCategories(){
 }
 function render(){
   document.documentElement.lang=english?'en':'id';
+  $('.brand').setAttribute('aria-label',english?'Warung Coto Daeng, home':'Warung Coto Daeng, beranda');
   $('#welcome').setAttribute('aria-label',english?'Search and actions':'Pencarian dan aksi');
   $('#categories').setAttribute('aria-label',english?'Menu categories':'Kategori menu');
   $('#search').setAttribute('aria-label',english?'Search menu':'Cari menu');
   $('.wa-quick').setAttribute('aria-label',english?'Prepare a WhatsApp order':'Susun pesanan WhatsApp');
   $('#theme').setAttribute('aria-label',english?(dark?'Use light theme':'Use dark theme'):(dark?'Gunakan tema terang':'Gunakan tema gelap'));
+  $('#visitPhoto').alt=english?'Illustrative Makassar dish photo for a fictional demo':'Foto ilustrasi hidangan Makassar untuk demo fiktif';
   $('#lang').setAttribute('aria-label',english?'Switch language to Indonesian':'Ganti bahasa ke Inggris');
   $('.sheet-close').setAttribute('aria-label',english?'Close item details':'Tutup detail menu');
   $('#sheetMinus').setAttribute('aria-label',english?'Decrease quantity':'Kurangi jumlah');

@@ -112,7 +112,7 @@
     </section>
 
     <section class="visit-section">
-      <img class="visit-photo" src="assets/hero.webp" loading="lazy" decoding="async" alt="Foto ilustrasi hidangan Makassar untuk demo fiktif">
+      <img id="visitPhoto" class="visit-photo" src="assets/hero.webp" loading="lazy" decoding="async" alt="Foto ilustrasi hidangan Makassar untuk demo fiktif">
       <div class="visit-copy"><p class="eyebrow" id="visitOverline">SINGGAH SEBENTAR</p><h2 id="visitTitle">Selalu ada tempat di meja kami.</h2><p id="hours"></p><p id="address"></p><a class="text-link" id="map" target="_blank" rel="noopener">Buka peta <span>↗</span></a></div>
     </section>
 
@@ -137,7 +137,10 @@
       "name": "Coto Makassar",
       "description": "Daging sapi dan kuah rempah, ditemani ketupat.",
       "price": 32000,
-      "tags": ["Halal · contoh", "Pedas ringan"],
+      "tags": [
+        "Halal · contoh",
+        "Pedas ringan"
+      ],
       "image": "assets/coto.webp"
     },
     {
@@ -145,7 +148,10 @@
       "name": "Konro Bakar",
       "description": "Iga sapi berbumbu, dibakar dan disajikan hangat.",
       "price": 58000,
-      "tags": ["Halal · contoh", "Pedas"],
+      "tags": [
+        "Halal · contoh",
+        "Pedas"
+      ],
       "image": "assets/konro.webp"
     },
     {
@@ -153,7 +159,10 @@
       "name": "Pallubasa",
       "description": "Kuah rempah khas, pilihan daging dan kelapa sangrai.",
       "price": 35000,
-      "tags": ["Halal · contoh", "Bisa pedas"],
+      "tags": [
+        "Halal · contoh",
+        "Bisa pedas"
+      ],
       "image": "assets/pallubasa.webp"
     },
     {
@@ -161,21 +170,144 @@
       "name": "Es Pisang Ijo",
       "description": "Pisang berbalut adonan pandan, es dan sirup.",
       "price": 18000,
-      "tags": ["Manis", "Favorit"],
+      "tags": [
+        "Manis",
+        "Favorit"
+      ],
       "image": "assets/pisang-ijo.webp"
     },
-    {"category":"Makanan","name":"Sop Saudara","description":"Sup daging berempah dengan bihun, kentang goreng, dan perkedel.","price":32000,"tags":["Hangat","Khas Makassar"],"image":"assets/coto.webp"},
-    {"category":"Makanan","name":"Nasu Palekko","description":"Bebek berbumbu khas dengan rasa pedas yang menggugah selera.","price":38000,"tags":["Pedas","Khas Bugis"],"image":"assets/konro.webp"},
-    {"category":"Makanan","name":"Ikan Bakar","description":"Ikan bakar berbumbu, disajikan dengan sambal dan jeruk segar.","price":45000,"tags":["Bakar","Sambal"],"image":"assets/hero.webp"},
-    {"category":"Makanan","name":"Mie Titi","description":"Mie kering renyah bersiram kuah kental berisi sayur dan ayam.","price":30000,"tags":["Gurih","Khas Makassar"],"image":"assets/pallubasa.webp"},
-    {"category":"Minuman","name":"Es Palu Butung","description":"Pisang kukus dengan saus santan, es, dan sirup merah.","price":18000,"tags":["Dingin","Manis"],"image":"assets/pisang-ijo.webp"},
-    {"category":"Minuman","name":"Teh Hangat","description":"Teh pilihan diseduh hangat, pas menemani hidangan berempah.","price":8000,"tags":["Hangat","Pilihan"],"image":"assets/coto.webp"},
-    {"category":"Minuman","name":"Es Teh","description":"Teh segar dengan es, sederhana untuk teman bersantap.","price":8000,"tags":["Dingin","Segar"],"image":"assets/hero.webp"},
-    {"category":"Minuman","name":"Kopi Susu","description":"Kopi dan susu dengan rasa seimbang, disajikan dingin.","price":18000,"tags":["Kopi","Dingin"],"image":"assets/pallubasa.webp"},
-    {"category":"Minuman","name":"Es Jeruk","description":"Perasan jeruk segar dengan es, asam-manis menyegarkan.","price":15000,"tags":["Dingin","Segar"],"image":"assets/hero.webp"},
-    {"category":"Camilan","name":"Jalangkote","description":"Pastel renyah berisi sayuran dan bihun, dengan sambal cuka.","price":10000,"tags":["Gurih","Camilan"],"image":"assets/konro.webp"},
-    {"category":"Camilan","name":"Barongko","description":"Kue pisang kukus lembut dalam bungkus daun pisang.","price":12000,"tags":["Manis","Tradisional"],"image":"assets/pisang-ijo.webp"},
-    {"category":"Camilan","name":"Pisang Epe","description":"Pisang bakar pipih dengan siraman saus gula merah.","price":18000,"tags":["Bakar","Manis"],"image":"assets/hero.webp"}
+    {
+      "category": "Makanan",
+      "name": "Sop Saudara",
+      "description": "Sup daging berempah dengan bihun, kentang goreng, dan perkedel.",
+      "price": 32000,
+      "tags": [
+        "Hangat",
+        "Khas Makassar"
+      ],
+      "image": "assets/sop-saudara.jpg"
+    },
+    {
+      "category": "Makanan",
+      "name": "Nasu Palekko",
+      "description": "Bebek berbumbu khas dengan rasa pedas yang menggugah selera.",
+      "price": 38000,
+      "tags": [
+        "Pedas",
+        "Khas Bugis"
+      ],
+      "image": "assets/nasu-palekko.jpg"
+    },
+    {
+      "category": "Makanan",
+      "name": "Ikan Bakar",
+      "description": "Ikan bakar berbumbu, disajikan dengan sambal dan jeruk segar.",
+      "price": 45000,
+      "tags": [
+        "Bakar",
+        "Sambal"
+      ],
+      "image": "assets/ikan-bakar.jpg"
+    },
+    {
+      "category": "Makanan",
+      "name": "Mie Titi",
+      "description": "Mie kering renyah bersiram kuah kental berisi sayur dan ayam.",
+      "price": 30000,
+      "tags": [
+        "Gurih",
+        "Khas Makassar"
+      ],
+      "image": "assets/mie-titi.jpg"
+    },
+    {
+      "category": "Minuman",
+      "name": "Es Palu Butung",
+      "description": "Pisang kukus dengan saus santan, es, dan sirup merah.",
+      "price": 18000,
+      "tags": [
+        "Dingin",
+        "Manis"
+      ],
+      "image": "assets/es-palu-butung.jpg"
+    },
+    {
+      "category": "Minuman",
+      "name": "Teh Hangat",
+      "description": "Teh pilihan diseduh hangat, pas menemani hidangan berempah.",
+      "price": 8000,
+      "tags": [
+        "Hangat",
+        "Pilihan"
+      ],
+      "image": "assets/teh-hangat.jpg"
+    },
+    {
+      "category": "Minuman",
+      "name": "Es Teh",
+      "description": "Teh segar dengan es, sederhana untuk teman bersantap.",
+      "price": 8000,
+      "tags": [
+        "Dingin",
+        "Segar"
+      ],
+      "image": "assets/es-teh.jpg"
+    },
+    {
+      "category": "Minuman",
+      "name": "Kopi Susu",
+      "description": "Kopi dan susu dengan rasa seimbang, disajikan dingin.",
+      "price": 18000,
+      "tags": [
+        "Kopi",
+        "Dingin"
+      ],
+      "image": "assets/kopi-susu.jpg"
+    },
+    {
+      "category": "Minuman",
+      "name": "Es Jeruk",
+      "description": "Perasan jeruk segar dengan es, asam-manis menyegarkan.",
+      "price": 15000,
+      "tags": [
+        "Dingin",
+        "Segar"
+      ],
+      "image": "assets/es-jeruk.jpg"
+    },
+    {
+      "category": "Camilan",
+      "name": "Jalangkote",
+      "description": "Pastel renyah berisi sayuran dan bihun, dengan sambal cuka.",
+      "price": 10000,
+      "tags": [
+        "Gurih",
+        "Camilan"
+      ],
+      "image": "assets/jalangkote.jpg"
+    },
+    {
+      "category": "Camilan",
+      "name": "Barongko",
+      "description": "Kue pisang kukus lembut dalam bungkus daun pisang.",
+      "price": 12000,
+      "tags": [
+        "Manis",
+        "Tradisional"
+      ],
+      "image": "assets/barongko.jpg"
+    },
+    {
+      "category": "Camilan",
+      "name": "Pisang Epe",
+      "description": "Pisang bakar pipih dengan siraman saus gula merah.",
+      "price": 18000,
+      "tags": [
+        "Bakar",
+        "Manis"
+      ],
+      "image": "assets/pisang-epe.jpg"
+    }
   ],
   "disclaimer": "DEMO FIKTIF. Nama, nomor, lokasi, jam, harga, menu, tag dan gambar hanya contoh. Tag halal hanya placeholder, bukan klaim produk tersertifikasi. Foto AI ilustrasi; bukan foto produk yang dijual. Tombol WhatsApp hanya menyiapkan draf pesan; periksa penerima, item dan jumlah sebelum mengirim."
 }
@@ -225,11 +357,13 @@ function renderCategories(){
 }
 function render(){
   document.documentElement.lang=english?'en':'id';
+  $('.brand').setAttribute('aria-label',english?'Warung Coto Daeng, home':'Warung Coto Daeng, beranda');
   $('#welcome').setAttribute('aria-label',english?'Search and actions':'Pencarian dan aksi');
   $('#categories').setAttribute('aria-label',english?'Menu categories':'Kategori menu');
   $('#search').setAttribute('aria-label',english?'Search menu':'Cari menu');
   $('.wa-quick').setAttribute('aria-label',english?'Prepare a WhatsApp order':'Susun pesanan WhatsApp');
   $('#theme').setAttribute('aria-label',english?(dark?'Use light theme':'Use dark theme'):(dark?'Gunakan tema terang':'Gunakan tema gelap'));
+  $('#visitPhoto').alt=english?'Illustrative Makassar dish photo for a fictional demo':'Foto ilustrasi hidangan Makassar untuk demo fiktif';
   $('#lang').setAttribute('aria-label',english?'Switch language to Indonesian':'Ganti bahasa ke Inggris');
   $('.sheet-close').setAttribute('aria-label',english?'Close item details':'Tutup detail menu');
   $('#sheetMinus').setAttribute('aria-label',english?'Decrease quantity':'Kurangi jumlah');
