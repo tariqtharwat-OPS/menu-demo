@@ -8,6 +8,7 @@ const quantity = name => cart.get(name) || 0;
 const safe = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const label = item => english ? (dict[item.name] || item.name) : item.name;
 const description = item => english ? (descEN[item.name] || 'Illustrative description · demo only') : item.description;
+const categoryLabel = cat => english ? (cat==='Semua'?'All':safe(dict[cat]||cat)) : (cat==='Minuman & pencuci mulut'?'Minuman & camilan':safe(cat));
 const qtyTotal = () => [...cart.values()].reduce((a,b)=>a+b,0);
 const totalPrice = () => [...cart].reduce((sum,[name,q])=>sum+(all.find(x=>x.name===name)?.price||0)*q,0);
 
@@ -36,7 +37,7 @@ function tagsFor(item){
 }
 function renderCategories(){
   const categories=['Semua',...new Set(all.map(x=>x.category))];
-  $('#categories').innerHTML=categories.map(cat=>`<button class="category-chip ${cat===activeCategory?'active':''}" type="button" data-category="${safe(cat)}">${english?(cat==='Semua'?'All':safe(dict[cat]||cat)):safe(cat)}</button>`).join('');
+  $('#categories').innerHTML=categories.map(cat=>`<button class="category-chip ${cat===activeCategory?'active':''}" type="button" data-category="${safe(cat)}">${categoryLabel(cat)}</button>`).join('');
   document.querySelectorAll('.category-chip').forEach(btn=>btn.addEventListener('click',()=>{activeCategory=btn.dataset.category;$('#search').value='';render();btn.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}));
 }
 function render(){
@@ -86,7 +87,7 @@ function refreshSheet(){
 function mutate(name,delta){const n=quantity(name)+delta;if(n>0)cart.set(name,n);else cart.delete(name);updateOrder();render();}
 DATA.then(d=>{
   menuData=d;all=d.menu;
-  $('#name').textContent=d.businessName.replace(' — DEMO','');$('#brandName').textContent=d.businessName.replace('Warung ','').replace(' — DEMO','');$('#footerName').textContent=d.businessName.replace(' — DEMO','');
+  $('#name').textContent=d.businessName.replace(/^Warung\s+/,'').replace(' — DEMO','');$('#brandName').textContent=d.businessName.replace('Warung ','').replace(' — DEMO','');$('#footerName').textContent=d.businessName.replace(' — DEMO','');
   $('#tagline').textContent=d.tagline;$('#heroHours').textContent=d.hours.replace('Setiap hari · ','').replace(' (contoh)','');$('#hours').textContent=d.hours;$('#address').textContent=d.address;$('#map').href=d.locationUrl;
   $('#lang').addEventListener('click',()=>{english=!english;$('#lang').textContent=english?'ID':'EN';render();updateOrder();});
   $('#theme').addEventListener('click',()=>{dark=!dark;document.body.classList.toggle('dark-theme',dark);$('#theme').textContent=dark?'☼':'◐';$('#theme').setAttribute('aria-label',dark?'Gunakan tema terang':'Gunakan tema gelap');});
