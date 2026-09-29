@@ -13,3 +13,17 @@
   .food-info p{margin:6px 0 10px}
   .sheet-close{right:18px;top:18px;box-shadow:0 2px 12px #081c1540}
 }
+/* Floating order control and detail sheet finish */
+.cartbar{width:min(470px,calc(100% - 32px));min-height:58px;padding:8px 9px 8px 12px;border:1px solid #d8d2c3;background:color-mix(in srgb,var(--surface) 96%,transparent);color:var(--ink);box-shadow:0 8px 28px #18251d24;backdrop-filter:blur(12px)}
+.cart-icon{background:var(--forest);color:#f0d18e}
+.cart-copy small{color:var(--muted)}
+.cart-button{min-width:132px;padding:11px 12px;background:var(--forest);color:#fff}
+.item-sheet{inset:auto auto max(10px,env(safe-area-inset-bottom));width:min(584px,calc(100% - 16px));border-radius:18px;box-shadow:0 16px 65px #09140f55}
+.item-sheet>img{border-radius:18px 18px 0 0}
+.sheet-content{padding-left:22px;padding-right:22px}
+@media(max-width:680px){
+  .cartbar{width:calc(100% - 24px)}
+  .cart-button{min-width:126px}
+  .item-sheet{width:calc(100% - 16px);max-height:calc(92dvh - env(safe-area-inset-bottom));}
+  .sheet-close{right:16px;top:16px}
+}
