@@ -27,3 +27,6 @@
   .item-sheet{width:calc(100% - 16px);max-height:calc(92dvh - env(safe-area-inset-bottom));}
   .sheet-close{right:16px;top:16px}
 }
+.item-sheet{left:50%;right:auto}
+.item-sheet[open]{animation:sheet-in .32s cubic-bezier(.2,.8,.2,1)}
+@keyframes sheet-in{from{transform:translate(-50%,30px);opacity:.7}to{transform:translate(-50%,0);opacity:1}}
