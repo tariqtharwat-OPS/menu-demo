@@ -3,7 +3,7 @@ let english = false, dark = false, all = [], cart = new Map(), menuData = null, 
 const $ = s => document.querySelector(s);
 const money = n => 'Rp' + new Intl.NumberFormat('id-ID').format(n);
 const dict = {'Coto Makassar':'Makassar beef soup','Konro Bakar':'Grilled beef ribs','Pallubasa':'Pallubasa beef soup','Es Pisang Ijo':'Green banana dessert','Makanan':'Main dishes','Minuman & pencuci mulut':'Drinks & dessert'};
-const descEN = {'Coto Makassar':'Slow-simmered beef and warm spices, served with ketupat.','Konro Bakar':'Smoky grilled beef ribs with a rich Makassar spice rub.','Pallubasa':'Silky spiced broth with beef and toasted coconut.','Es Pisang Ijo':'Banana wrapped in pandan dough, shaved ice and syrup.'};
+const descEN = {'Coto Makassar':'Beef in a spiced broth, served with ketupat.','Konro Bakar':'Smoky grilled beef ribs with a rich Makassar spice rub.','Pallubasa':'Silky spiced broth with beef and toasted coconut.','Es Pisang Ijo':'Banana wrapped in pandan dough, shaved ice and syrup.'};
 const quantity = name => cart.get(name) || 0;
 const safe = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const label = item => english ? (dict[item.name] || item.name) : item.name;
