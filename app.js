@@ -20,6 +20,7 @@ function makeMessage() {
 function updateOrder() {
   const count=qtyTotal();
   $('#cartbar').hidden=count===0;
+  document.body.classList.toggle('has-cart',count>0);
   $('#cartCount').textContent=english?`${count} ${count===1?'item':'items'}`:`${count} item dipilih`;
   $('#cartTotal').textContent=english?`Simulated total ${money(totalPrice())}`:`Total simulasi ${money(totalPrice())}`;
   document.querySelectorAll('.compose-order').forEach(a=>{
